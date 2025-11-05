@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-
+// <BrowserRouter basename="/Diamond_Data_Baseball_Stat_Tracker/">
   return (
     <>
       <div>
