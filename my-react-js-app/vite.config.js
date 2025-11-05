@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Diamond_Data_Baseball_Stat_Tracker/'
+  base: '/Diamond_Data_Baseball_Stat_Tracker/',
   plugins: [react(),
     tailwindcss(),
   ],
