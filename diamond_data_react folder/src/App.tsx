@@ -3,10 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/Layout/Footer";
+import "../src/index.css" 
 
 const App: React.FC = () => {
   return (
-    <><p> test test</p>
+    
     <BrowserRouter>
      
 

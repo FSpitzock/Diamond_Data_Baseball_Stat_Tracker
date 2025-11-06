@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
 
       <p className="footer-copy">
         &copy; {new Date().getFullYear()} Diamond Data LLC. <br />
-        Created by Dwayne Burn and Frank Spitzock. <br />
+        Created by Dwayne Burns and Frank Spitzock. <br />
         All rights reserved.
       </p>
     </footer>
