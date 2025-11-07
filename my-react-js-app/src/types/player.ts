@@ -7,7 +7,8 @@ interface Player {
   position: PlayerPosition;
   birthDate: string;
   team: string;
-  stats: PlayerGame[] | null;
+  totalStats: PlayerGame[] | null;
+  
 }
 
 type PlayerGame = {
@@ -15,7 +16,19 @@ type PlayerGame = {
   date: string;
   team1: string;
   team2: string;
-  stats: string[];
+  stats: GameStats;
 }
 
 type PlayerPosition = 'P' | 'C' | '1B' | '2B' | '3B' | 'SS' | 'OF'
+
+export type GameStats = {
+  atBats: number;
+  hits: number;
+  singles: number;
+  doubles: number;
+  triples: number;
+  homeRuns: number;
+  rbi: number;
+  walks: number;
+  strikeOuts: number;
+}
