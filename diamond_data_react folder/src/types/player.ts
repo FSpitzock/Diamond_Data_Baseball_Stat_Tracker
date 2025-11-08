@@ -1,4 +1,7 @@
-interface Player {
+import { PlayerPosition } from './position';
+import { GameStats } from './game';
+
+export interface Player {
   id: number;
   firstName: string;
   lastName: string;
@@ -8,7 +11,6 @@ interface Player {
   birthDate: string;
   team: string;
   totalStats: PlayerGame[] | null;
-  
 }
 
 type PlayerGame = {
@@ -17,18 +19,4 @@ type PlayerGame = {
   team1: string;
   team2: string;
   stats: GameStats;
-}
-
-type PlayerPosition = 'P' | 'C' | '1B' | '2B' | '3B' | 'SS' | 'OF'
-
-export type GameStats = {
-  atBats: number;
-  hits: number;
-  singles: number;
-  doubles: number;
-  triples: number;
-  homeRuns: number;
-  rbi: number;
-  walks: number;
-  strikeOuts: number;
 }
