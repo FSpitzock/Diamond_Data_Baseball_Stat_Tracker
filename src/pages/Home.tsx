@@ -1,3 +1,5 @@
+// Player overview page to view total stats for a player
+
 
 
 function Home () {
