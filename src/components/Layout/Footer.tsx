@@ -4,19 +4,25 @@ import Navigation from "../Layout/Navigation";
 const Footer: React.FC = () => {
   return (
     <footer className="footer">
-      <p>Diamond Data Stats</p>
+      <div className="footer-container">
 
-      <p>Quick Links</p>
+        {/* Left Side — Branding */}
+        <div className="footer-branding">
+          <h2 className="footer-title">Diamond Data Stats</h2>
+          <p className="footer-sub">Quick Links</p>
 
-      <div className="navFoot">
-        <Navigation />
+          <div className="footer-nav">
+            <Navigation />
+          </div>
+        </div>
+
+        {/* Right Side — Copyright */}
+        <div className="footer-copy">
+          <p>&copy; {new Date().getFullYear()} Diamond Data LLC.</p>
+          <p>Created by Dwayne Burns and Frank Spitzock.</p>
+          <p>All rights reserved.</p>
+        </div>
       </div>
-
-      <p className="footer-copy">
-        &copy; {new Date().getFullYear()} Diamond Data LLC. <br />
-        Created by Dwayne Burns and Frank Spitzock. <br />
-        All rights reserved.
-      </p>
     </footer>
   );
 };
