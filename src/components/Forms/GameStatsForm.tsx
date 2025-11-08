@@ -30,7 +30,103 @@ const GameStatsForm: React.FC = () => {
           <button onClick={increment}>+</button>
           <button onClick={() => setState({ count: 0 })}>Reset</button>
         </div>
+      </div>
+
+      <div className="row-container flex row items-center gap-8">
+        <div>
+          <h2>Hits:</h2>
+        </div>
+        <div className="flex row items-center gap-2">
+          <div className="text-2xl font-bold text-center w-12">{state.count}</div>
+          <button onClick={decrement}>-</button>
+          <button onClick={increment}>+</button>
+          <button onClick={() => setState({ count: 0 })}>Reset</button>
+        </div>
       </div>  
+
+      <div className="row-container flex row items-center gap-8">
+        <div>
+          <h2>Singles:</h2>
+        </div>
+        <div className="flex row items-center gap-2">
+          <div className="text-2xl font-bold text-center w-12">{state.count}</div>
+          <button onClick={decrement}>-</button>
+          <button onClick={increment}>+</button>
+          <button onClick={() => setState({ count: 0 })}>Reset</button>
+        </div>
+      </div>
+
+      <div className="row-container flex row items-center gap-8">
+        <div>
+          <h2>Doubles:</h2>
+        </div>
+        <div className="flex row items-center gap-2">
+          <div className="text-2xl font-bold text-center w-12">{state.count}</div>
+          <button onClick={decrement}>-</button>
+          <button onClick={increment}>+</button>
+          <button onClick={() => setState({ count: 0 })}>Reset</button>
+        </div>
+      </div>
+
+      <div className="row-container flex row items-center gap-8">
+        <div>
+          <h2>Triples:</h2>
+        </div>
+        <div className="flex row items-center gap-2">
+          <div className="text-2xl font-bold text-center w-12">{state.count}</div>
+          <button onClick={decrement}>-</button>
+          <button onClick={increment}>+</button>
+          <button onClick={() => setState({ count: 0 })}>Reset</button>
+        </div>
+      </div>
+
+      <div className="row-container flex row items-center gap-8">
+        <div>
+          <h2>Home Runs:</h2>
+        </div>
+        <div className="flex row items-center gap-2">
+          <div className="text-2xl font-bold text-center w-12">{state.count}</div>
+          <button onClick={decrement}>-</button>
+          <button onClick={increment}>+</button>
+          <button onClick={() => setState({ count: 0 })}>Reset</button>
+        </div>
+      </div>
+
+      <div className="row-container flex row items-center gap-8">
+        <div>
+          <h2>RBI:</h2>
+        </div>
+        <div className="flex row items-center gap-2">
+          <div className="text-2xl font-bold text-center w-12">{state.count}</div>
+          <button onClick={decrement}>-</button>
+          <button onClick={increment}>+</button>
+          <button onClick={() => setState({ count: 0 })}>Reset</button>
+        </div>
+      </div>
+
+      <div className="row-container flex row items-center gap-8">
+        <div>
+          <h2>Walks:</h2>
+        </div>
+        <div className="flex row items-center gap-2">
+          <div className="text-2xl font-bold text-center w-12">{state.count}</div>
+          <button onClick={decrement}>-</button>
+          <button onClick={increment}>+</button>
+          <button onClick={() => setState({ count: 0 })}>Reset</button>
+        </div>
+      </div>
+
+      <div className="row-container flex row items-center gap-8">
+        <div>
+          <h2>Strikeouts:</h2>
+        </div>
+        <div className="flex row items-center gap-2">
+          <div className="text-2xl font-bold text-center w-12">{state.count}</div>
+          <button onClick={decrement}>-</button>
+          <button onClick={increment}>+</button>
+          <button onClick={() => setState({ count: 0 })}>Reset</button>
+        </div>
+      </div>
     </section>
   )};
 
