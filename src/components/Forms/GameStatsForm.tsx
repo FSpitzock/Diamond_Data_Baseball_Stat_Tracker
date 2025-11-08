@@ -1,26 +1,5 @@
 import React, { useState } from 'react';
-
-// type CounterState = {
-//   count: number;
-// }
-
-// export default function AddStat() {
-//   const [value, setValue] = useState("");
-
-//   return (
-//     <label>
-//     Amount:
-//     <input
-//       type="number"
-//       value={value}
-//       onChange={(e) => setValue(e.target.value)}
-//       required
-//     />
-//   </label>
-
-// )};
-
-// v2
+import { GameStats } from '../../types/game';
 
 type CounterState = {
   count: number;
@@ -31,21 +10,28 @@ const GameStatsForm: React.FC = () => {
     count: 0,
   });
 
-const decrement = () => {
-  setState({ count: state.count - 1 });
-}
+  const decrement = () => {
+    setState({ count: state.count - 1 });
+  }
 
-const increment = () => {
-  setState({ count: state.count + 1 });
-}
+  const increment = () => {
+    setState({ count: state.count + 1 });
+  }
 
-return (
-  <div className="counter">
-    <h2>Counter: {state.count}</h2>
-    <button onClick={decrement}>-</button>
-    <button onClick={increment}>+</button>
-  </div>
-)};
+  return (
+    <section className="counter">
+      <div className="row-container flex row items-center gap-8">
+        <div>
+          <h2>At Bats:</h2>
+        </div>
+        <div className="flex row items-center gap-2">
+          <div className="text-2xl font-bold text-center w-12">{state.count}</div>
+          <button onClick={decrement}>-</button>
+          <button onClick={increment}>+</button>
+          <button onClick={() => setState({ count: 0 })}>Reset</button>
+        </div>
+      </div>  
+    </section>
+  )};
 
-export default GameStatsForm
-
+  export default GameStatsForm
