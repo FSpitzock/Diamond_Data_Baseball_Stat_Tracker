@@ -40,3 +40,61 @@
 .read-the-docs {
   color: #888;
 }
+
+.header {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 48px;
+  height: 48px;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #444;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #0077ff;
+}
+
+.nav-link.active {
+  color: #0077ff;
+  font-weight: bold;
+}
+
