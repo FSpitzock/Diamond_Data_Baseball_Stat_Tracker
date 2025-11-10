@@ -11,20 +11,13 @@ import {
 
 type CounterState = {
   count: number;
+  savedAt?: string;
 };
 
 const StatsPage: React.FC = () => {
-  const [stats, setStats] = useState<CounterState>({ count: 0 });
+  const [statsArray, setStatsArray] = useState<CounterState[]>([]);
 
-  //LOAD SAVED STATS FROM LOCAL STORAGE
-  useEffect(() => {
-    const saved = localStorage.getItem("gameStats");
-    if (saved) {
-      setStats(JSON.parse(saved));
-    }
-  }, []);
-
-   const labels = [
+  const labels = [
     "At Bats",
     "Hits",
     "Singles",
@@ -36,29 +29,56 @@ const StatsPage: React.FC = () => {
     "Strike Outs",
   ];
 
-    return (
+  // LOAD SAVED STATS FROM LOCAL STORAGE
+  useEffect(() => {
+    const saved = localStorage.getItem("gameStats");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setStatsArray(Array.isArray(parsed) ? parsed : [parsed]);
+      } catch (error) {
+        console.error("Failed to parse saved stats:", error);
+        setStatsArray([]);
+      }
+    }
+  }, []);
+
+  if (!statsArray.length) {
+    return <p className="p-6 text-xl">No saved stats yet.</p>;
+  }
+
+  return (
     <section className="p-6">
       <h1 className="text-2xl font-bold mb-4">Saved Stats</h1>
 
       <Table>
         <TableCaption>Your saved baseball stats</TableCaption>
 
-        {/* ✅ HORIZONTAL HEADERS */}
+        {/* HORIZONTAL HEADERS */}
         <TableHeader>
           <TableRow>
+            <TableHead>Saved At</TableHead>
             {labels.map((label) => (
               <TableHead key={label}>{label}</TableHead>
             ))}
           </TableRow>
         </TableHeader>
 
-        {/* ✅ ONE HORIZONTAL ROW OF VALUES */}
+        {/* ONE ROW PER SAVED ENTRY */}
         <TableBody>
-          <TableRow>
-            {labels.map((label) => (
-              <TableCell key={label}>{stats.count}</TableCell>
-            ))}
-          </TableRow>
+          {statsArray.map((stat, index) => (
+            <TableRow key={index}>
+              <TableCell>
+                {stat.savedAt
+                  ? new Date(stat.savedAt).toLocaleString()
+                  : `Entry #${index + 1}`}
+              </TableCell>
+              {/* Display count for now, you can expand to multiple stats later */}
+              {labels.map((label) => (
+                <TableCell key={label}>{stat.count}</TableCell>
+              ))}
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </section>
