@@ -18,6 +18,12 @@ const GameStatsForm: React.FC = () => {
     setState({ count: state.count + 1 });
   }
 
+  //LOCAL STORAGE
+    const saveToLocalStorage = () => {
+    localStorage.setItem("gameStats", JSON.stringify(state));
+    alert("Saved!");
+  };
+
   return (
     <section className="counter">
       <div className="row-container flex row items-center gap-8">
@@ -127,7 +133,14 @@ const GameStatsForm: React.FC = () => {
           <button onClick={() => setState({ count: 0 })}>Reset</button>
         </div>
       </div>
+    
+    <button onClick={saveToLocalStorage}>Save Stats</button>
     </section>
+
+    
   )};
+
+
+
 
   export default GameStatsForm
