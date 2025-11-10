@@ -18,11 +18,29 @@ const GameStatsForm: React.FC = () => {
     setState({ count: state.count + 1 });
   }
 
-  //LOCAL STORAGE
-    const saveToLocalStorage = () => {
-    localStorage.setItem("gameStats", JSON.stringify(state));
-    alert("Saved!");
-  };
+  // LOCAL STORAGE
+const saveToLocalStorage = () => {
+  const existing = localStorage.getItem("gameStats");
+  
+  // Parse and ensure it's an array
+  let statsArray: CounterState[] = [];
+  if (existing) {
+    try {
+      const parsed = JSON.parse(existing);
+      statsArray = Array.isArray(parsed) ? parsed : [parsed]; // wrap single object in array
+    } catch (error) {
+      console.error("Failed to parse localStorage:", error);
+      statsArray = [];
+    }
+  }
+
+  // Add current state + timestamp
+  statsArray.push({ ...state, savedAt: new Date().toISOString() });
+
+  // Save back to localStorage
+  localStorage.setItem("gameStats", JSON.stringify(statsArray));
+  alert("Saved!");
+};
 
   return (
     <section className="counter">
