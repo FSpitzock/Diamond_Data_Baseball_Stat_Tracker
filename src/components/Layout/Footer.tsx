@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
         {/* Right Side — Copyright */}
         <div className="footer-copy">
           <p>&copy; {new Date().getFullYear()} Diamond Data LLC.</p>
-          <p>Created by Dwayne Burns and Frank Spitzock.</p>
+          <p>Created by Dwayne Burns and Frank Spitzock</p>
           <p>All rights reserved.</p>
         </div>
       </div>
