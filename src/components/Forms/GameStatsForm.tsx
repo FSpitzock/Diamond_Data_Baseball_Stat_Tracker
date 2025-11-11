@@ -28,7 +28,7 @@ const saveToLocalStorage = () => {
   const existing = localStorage.getItem("gameStats");
   
   // Parse and ensure it's an array
-  let statsArray: CounterState[] = [];
+  let statsArray: GameStats[] = [];
   if (existing) {
     try {
       const parsed = JSON.parse(existing);
@@ -40,7 +40,7 @@ const saveToLocalStorage = () => {
   }
 
   // Add current state + timestamp
-  statsArray.push({ ...state, savedAt: new Date().toISOString() });
+  statsArray.push({ ...gameStats, savedAt: new Date().toISOString() });
 
   // Save back to localStorage
   localStorage.setItem("gameStats", JSON.stringify(statsArray));
