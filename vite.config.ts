@@ -6,8 +6,10 @@ import path from "path"
 // https://vite.dev/config/
 export default defineConfig({
   base: '/Diamond_Data_Baseball_Stat_Tracker/',
-  plugins: [react(),
-    tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
     resolve: {
       alias: {
         "@":path.resolve(__dirname, "./src"),

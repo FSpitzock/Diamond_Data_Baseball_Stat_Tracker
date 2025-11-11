@@ -26,8 +26,8 @@ function PlayerDetails({ player }: PlayerDetailsProps) {
         alt={`${player.firstName} ${player.lastName}`}
         className="w-96 h-64 rounded bg-gray-300"
       />
-      <div className="flex flex-col items-start justify-center">
-        <h1 className="text-2xl font-bold mb-2">{player.firstName}</h1>
+      <div className="flex flex-col items-start">
+        <h1>{player.firstName}</h1>
         <h2 className="text-lg font-bold mb-2">{player.lastName}</h2>
         <div className="flex flex-row gap-4 justify-center">
           <div className="bg-blue-500 h-10 w-10 text-white px-2 rounded-full">
