@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GameStats } from '../../types/game';
+import { PlayerGame } from '../../types/player';
 
 const GameStatsForm: React.FC = () => {
   const [gameStats, setGameStats] = useState<GameStats>({
@@ -14,6 +15,18 @@ const GameStatsForm: React.FC = () => {
     strikeOuts: 0,
   });
 
+  const [playerGame, setPlayerGame] = useState<PlayerGame>({
+    gameId: Date.now(),
+    date: new Date().toISOString().split('T')[0],
+    team1: '',
+    team2: '',
+    stats: { ...gameStats },
+  });
+
+  useEffect(() => {
+    setPlayerGame(pg => ({ ...pg, stats: gameStats }));
+  }, [gameStats]);
+
 // useEffect(() => {
 //  go get GameStats from local storage
 //  will need to add useEffect to Home page component to get GameStats from local storage
@@ -25,30 +38,33 @@ useEffect(() => {
 
   // LOCAL STORAGE
 const saveToLocalStorage = () => {
-  const existing = localStorage.getItem("gameStats");
-  
-  // Parse and ensure it's an array
-  let statsArray: GameStats[] = [];
-  if (existing) {
-    try {
-      const parsed = JSON.parse(existing);
-      statsArray = Array.isArray(parsed) ? parsed : [parsed]; // wrap single object in array
-    } catch (error) {
-      console.error("Failed to parse localStorage:", error);
-      statsArray = [];
+  try {
+    const existing = localStorage.getItem('playerGames');
+    const parsed = existing ? JSON.parse(existing) : [];
+    const games: PlayerGame[] = Array.isArray(parsed) ? parsed : [];
+
+    const idx = games.findIndex(g => g.gameId === playerGame.gameId);
+    if (idx !== -1) {
+      // Update stats of existing game
+      games[idx] = { ...games[idx], stats: gameStats };
+    } else {
+      // Add new game with current stats
+      games.push({ ...playerGame, stats: gameStats });
     }
+
+    localStorage.setItem('playerGames', JSON.stringify(games));
+    alert(idx !== -1 ? 'Updated game stats.' : 'Saved new game.');
+  } catch (error) {
+    console.error('Failed to save player game:', error);
+    alert('Save failed.');
   }
-
-  // Add current state + timestamp
-  statsArray.push({ ...gameStats, savedAt: new Date().toISOString() });
-
-  // Save back to localStorage
-  localStorage.setItem("gameStats", JSON.stringify(statsArray));
-  alert("Saved!");
 };
 
   return (
     <section className="counter">
+      <div>
+        <input type="text" placeholder='Opponent' value={playerGame.team2} onChange={(e) => setPlayerGame(pg => ({ ...pg, team2: e.target.value }))} />
+      </div>
       <div className="row-container flex row items-center gap-8">
         <div>
           <h2>At Bats:</h2>

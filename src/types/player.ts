@@ -14,7 +14,7 @@ export interface Player {
   totalStats: PlayerGame[] | null;
 }
 
-type PlayerGame = {
+export type PlayerGame = {
   gameId: number;
   date: string;
   team1: string;
