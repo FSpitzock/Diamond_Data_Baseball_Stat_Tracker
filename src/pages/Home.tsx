@@ -9,24 +9,32 @@ import {
   TableCaption,
 } from "../components/ui/table";
 
-type CounterState = {
-  count: number;
+type GameStats = {
+  atBats: number;
+  hits: number;
+  singles: number;
+  doubles: number;
+  triples: number;
+  homeRuns: number;
+  rbi: number;
+  walks: number;
+  strikeOuts: number;
   savedAt?: string;
 };
 
 const StatsPage: React.FC = () => {
-  const [statsArray, setStatsArray] = useState<CounterState[]>([]);
+  const [statsArray, setStatsArray] = useState<GameStats[]>([]);
 
-  const labels = [
-    "At Bats",
-    "Hits",
-    "Singles",
-    "Doubles",
-    "Triples",
-    "Home Runs",
-    "RBI's",
-    "Walks",
-    "Strike Outs",
+  const labels: { key: Exclude<keyof GameStats, "savedAt">; label: string }[] = [
+    { key: "atBats", label: "At Bats" },
+    { key: "hits", label: "Hits" },
+    { key: "singles", label: "Singles" },
+    { key: "doubles", label: "Doubles" },
+    { key: "triples", label: "Triples" },
+    { key: "homeRuns", label: "Home Runs" },
+    { key: "rbi", label: "RBI's" },
+    { key: "walks", label: "Walks" },
+    { key: "strikeOuts", label: "Strike Outs" },
   ];
 
   // LOAD SAVED STATS FROM LOCAL STORAGE
@@ -47,6 +55,12 @@ const StatsPage: React.FC = () => {
     return <p className="p-6 text-xl">No saved stats yet.</p>;
   }
 
+  // CALCULATE TOTALS
+  const totals = labels.reduce((acc, item) => {
+    acc[item.key] = statsArray.reduce((sum, stat) => sum + (stat[item.key] || 0), 0);
+    return acc;
+  }, {} as Record<Exclude<keyof GameStats, "savedAt">, number>);
+
   return (
     <section className="p-6">
       <h1 className="text-2xl font-bold mb-4">Saved Stats</h1>
@@ -54,17 +68,15 @@ const StatsPage: React.FC = () => {
       <Table>
         <TableCaption>Your saved baseball stats</TableCaption>
 
-        {/* HORIZONTAL HEADERS */}
         <TableHeader>
           <TableRow>
             <TableHead>Saved At</TableHead>
-            {labels.map((label) => (
-              <TableHead key={label}>{label}</TableHead>
+            {labels.map((item) => (
+              <TableHead key={item.key}>{item.label}</TableHead>
             ))}
           </TableRow>
         </TableHeader>
 
-        {/* ONE ROW PER SAVED ENTRY */}
         <TableBody>
           {statsArray.map((stat, index) => (
             <TableRow key={index}>
@@ -73,12 +85,20 @@ const StatsPage: React.FC = () => {
                   ? new Date(stat.savedAt).toLocaleString()
                   : `Entry #${index + 1}`}
               </TableCell>
-              {/* Display count for now, you can expand to multiple stats later */}
-              {labels.map((label) => (
-                <TableCell key={label}>{stat.count}</TableCell>
+
+              {labels.map((item) => (
+                <TableCell key={item.key}>{stat[item.key]}</TableCell>
               ))}
             </TableRow>
           ))}
+
+          {/* ✅ TOTALS ROW */}
+          <TableRow className="font-bold bg-gray-100">
+            <TableCell>Totals</TableCell>
+            {labels.map((item) => (
+              <TableCell key={item.key}>{totals[item.key]}</TableCell>
+            ))}
+          </TableRow>
         </TableBody>
       </Table>
     </section>
