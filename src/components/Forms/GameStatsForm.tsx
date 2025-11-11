@@ -15,28 +15,47 @@ const GameStatsForm: React.FC = () => {
     strikeOuts: 0,
   });
 
+  const newDate = new Date();
+
+  const [playerGame, setPlayerGame] = useState<PlayerGame>({
+    gameId: 5,
+    date: '',
+    team1: '',
+    team2: '',
+    stats: { ...gameStats },
+  });
+
+  useEffect(() => {
+    setPlayerGame(pg => ({ ...pg, stats: gameStats }));
+  }, [gameStats]);
+
+
+useEffect(() => {
+  localStorage.setItem('gameStats', JSON.stringify(gameStats));
+}, [gameStats]);
+
   // LOCAL STORAGE
 const saveToLocalStorage = () => {
-  const existing = localStorage.getItem("gameStats");
-  
-  // Parse and ensure it's an array
-  let statsArray: (GameStats & { savedAt: string })[] = [];
-  if (existing) {
-    try {
-      const parsed = JSON.parse(existing);
-      statsArray = Array.isArray(parsed) ? parsed : [parsed]; // wrap single object in array
-    } catch (error) {
-      console.error("Failed to parse localStorage:", error);
-      statsArray = [];
+  try {
+    const existing = localStorage.getItem('playerGames');
+    const parsed = existing ? JSON.parse(existing) : [];
+    const games: PlayerGame[] = Array.isArray(parsed) ? parsed : [];
+
+    const idx = games.findIndex(g => g.gameId === playerGame.gameId);
+    if (idx !== -1) {
+      // Update stats of existing game
+      games[idx] = { ...games[idx], stats: gameStats };
+    } else {
+      // Add new game with current stats
+      games.push({ ...playerGame, stats: gameStats });
     }
+
+    localStorage.setItem('playerGames', JSON.stringify(games));
+    alert(idx !== -1 ? 'Updated game stats.' : 'Saved new game.');
+  } catch (error) {
+    console.error('Failed to save player game:', error);
+    alert('Save failed.');
   }
-
-  // Add current state + timestamp
-  statsArray.push({ ...gameStats, savedAt: new Date().toISOString() });
-
-  // Save back to localStorage
-  localStorage.setItem("gameStats", JSON.stringify(statsArray));
-  alert("Saved!");
 };
 
   return (
