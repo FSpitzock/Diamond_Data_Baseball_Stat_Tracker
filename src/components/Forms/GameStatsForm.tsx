@@ -23,6 +23,30 @@ useEffect(() => {
   localStorage.setItem('gameStats', JSON.stringify(gameStats));
 }, [gameStats]);
 
+  // LOCAL STORAGE
+const saveToLocalStorage = () => {
+  const existing = localStorage.getItem("gameStats");
+  
+  // Parse and ensure it's an array
+  let statsArray: CounterState[] = [];
+  if (existing) {
+    try {
+      const parsed = JSON.parse(existing);
+      statsArray = Array.isArray(parsed) ? parsed : [parsed]; // wrap single object in array
+    } catch (error) {
+      console.error("Failed to parse localStorage:", error);
+      statsArray = [];
+    }
+  }
+
+  // Add current state + timestamp
+  statsArray.push({ ...state, savedAt: new Date().toISOString() });
+
+  // Save back to localStorage
+  localStorage.setItem("gameStats", JSON.stringify(statsArray));
+  alert("Saved!");
+};
+
   return (
     <section className="counter">
       <div className="row-container flex row items-center gap-8">
@@ -132,9 +156,14 @@ useEffect(() => {
           <button onClick={() => setGameStats({ ...gameStats, strikeOuts: 0 })}>Reset</button>
         </div>
       </div>
-      {/* Submit button -- save to local storage*/}
+    
+    <button onClick={saveToLocalStorage}>Save Stats</button>
     </section>
-  )
-};
 
-export default GameStatsForm
+    
+  )};
+
+
+
+
+  export default GameStatsForm
