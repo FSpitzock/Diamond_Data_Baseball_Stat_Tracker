@@ -3,6 +3,22 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-sans: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white p-4 rounded-lg;
+  }
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;

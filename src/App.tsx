@@ -5,7 +5,6 @@ import Stats from "./pages/Stats";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
-import "../src/index.css";
 import '../src/App.css';
 
 
