@@ -3,6 +3,33 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Brand uses tailwind Blue and Neutral Colors */
+
+@theme {
+  --font-sans: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@layer base {
+  h1 {
+    @apply text-xl leading-none;
+  }
+  h2 {
+    @apply text-5xl tracking-tight;
+  }
+  h3 {
+    @apply text-3xl font-bold;
+  }
+  h4 {
+    @apply text-xs text-neutral-400 tracking-wider uppercase;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white p-4 rounded-lg;
+  }
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;

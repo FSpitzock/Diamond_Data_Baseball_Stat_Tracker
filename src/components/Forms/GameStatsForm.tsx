@@ -30,10 +30,6 @@ const GameStatsForm: React.FC = () => {
   }, [gameStats]);
 
 
-useEffect(() => {
-  localStorage.setItem('gameStats', JSON.stringify(gameStats));
-}, [gameStats]);
-
   // LOCAL STORAGE
 const saveToLocalStorage = () => {
   try {

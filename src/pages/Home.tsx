@@ -8,6 +8,8 @@ import {
   TableCell,
   TableCaption,
 } from "../components/ui/table";
+import { Player } from "../types/player";
+import PlayerDetails, { DemoPlayerDetails } from "@/components/ui/playerDetails";
 
 type GameStats = {
   atBats: number;
@@ -64,10 +66,9 @@ const StatsPage: React.FC = () => {
   return (
     <section className="p-6">
       <h1 className="text-2xl font-bold mb-4">Saved Stats</h1>
-
+      <DemoPlayerDetails />
       <Table>
         <TableCaption>Your saved baseball stats</TableCaption>
-
         <TableHeader>
           <TableRow>
             <TableHead>Saved At</TableHead>
