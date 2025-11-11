@@ -18,8 +18,8 @@ const GameStatsForm: React.FC = () => {
   const newDate = new Date();
 
   const [playerGame, setPlayerGame] = useState<PlayerGame>({
-    gameId: newDate,
-    date: newDate.getDay(),
+    gameId: 5,
+    date: '',
     team1: '',
     team2: '',
     stats: { ...gameStats },
