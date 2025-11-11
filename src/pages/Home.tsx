@@ -8,24 +8,12 @@ import {
   TableCell,
   TableCaption,
 } from "../components/ui/table";
-
-type GameStats = {
-  atBats: number;
-  hits: number;
-  singles: number;
-  doubles: number;
-  triples: number;
-  homeRuns: number;
-  rbi: number;
-  walks: number;
-  strikeOuts: number;
-  savedAt?: string;
-};
+import { PlayerGame } from "../types/player";
 
 const StatsPage: React.FC = () => {
-  const [statsArray, setStatsArray] = useState<GameStats[]>([]);
+  const [games, setGames] = useState<PlayerGame[]>([]);
 
-  const labels: { key: Exclude<keyof GameStats, "savedAt">; label: string }[] = [
+  const labels = [
     { key: "atBats", label: "At Bats" },
     { key: "hits", label: "Hits" },
     { key: "singles", label: "Singles" },
@@ -35,42 +23,46 @@ const StatsPage: React.FC = () => {
     { key: "rbi", label: "RBI's" },
     { key: "walks", label: "Walks" },
     { key: "strikeOuts", label: "Strike Outs" },
-  ];
+  ] as const;
 
-  // LOAD SAVED STATS FROM LOCAL STORAGE
+  // ✅ Load saved games
   useEffect(() => {
-    const saved = localStorage.getItem("gameStats");
+    const saved = localStorage.getItem("playerGames");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        setStatsArray(Array.isArray(parsed) ? parsed : [parsed]);
+        setGames(Array.isArray(parsed) ? parsed : [parsed]);
       } catch (error) {
-        console.error("Failed to parse saved stats:", error);
-        setStatsArray([]);
+        console.error("Failed to parse saved games:", error);
+        setGames([]);
       }
     }
   }, []);
 
-  if (!statsArray.length) {
-    return <p className="p-6 text-xl">No saved stats yet.</p>;
+  if (!games.length) {
+    return <p className="p-6 text-xl">No saved games yet.</p>;
   }
 
-  // CALCULATE TOTALS
+  // ✅ Calculate totals
   const totals = labels.reduce((acc, item) => {
-    acc[item.key] = statsArray.reduce((sum, stat) => sum + (stat[item.key] || 0), 0);
+    acc[item.key] = games.reduce(
+      (sum, game) => sum + (game.stats[item.key] || 0),
+      0
+    );
     return acc;
-  }, {} as Record<Exclude<keyof GameStats, "savedAt">, number>);
+  }, {} as Record<(typeof labels)[number]["key"], number>);
 
   return (
     <section className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Saved Stats</h1>
+      <h1 className="text-2xl font-bold mb-4">Saved Games</h1>
 
       <Table>
-        <TableCaption>Your saved baseball stats</TableCaption>
+        <TableCaption>All saved baseball game entries</TableCaption>
 
         <TableHeader>
           <TableRow>
-            <TableHead>Saved At</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead>Opponent</TableHead>
             {labels.map((item) => (
               <TableHead key={item.key}>{item.label}</TableHead>
             ))}
@@ -78,16 +70,20 @@ const StatsPage: React.FC = () => {
         </TableHeader>
 
         <TableBody>
-          {statsArray.map((stat, index) => (
+          {games.map((game, index) => (
             <TableRow key={index}>
               <TableCell>
-                {stat.savedAt
-                  ? new Date(stat.savedAt).toLocaleString()
-                  : `Entry #${index + 1}`}
+                {game.date
+                  ? new Date(game.date).toLocaleString()
+                  : `Game #${index + 1}`}
               </TableCell>
 
+              <TableCell>{game.team2 || "Unknown"}</TableCell>
+
               {labels.map((item) => (
-                <TableCell key={item.key}>{stat[item.key]}</TableCell>
+                <TableCell key={item.key}>
+                  {game.stats[item.key]}
+                </TableCell>
               ))}
             </TableRow>
           ))}
@@ -95,6 +91,7 @@ const StatsPage: React.FC = () => {
           {/* ✅ TOTALS ROW */}
           <TableRow className="font-bold bg-gray-100">
             <TableCell>Totals</TableCell>
+            <TableCell>—</TableCell>
             {labels.map((item) => (
               <TableCell key={item.key}>{totals[item.key]}</TableCell>
             ))}

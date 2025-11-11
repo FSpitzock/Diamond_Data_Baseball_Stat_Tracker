@@ -29,10 +29,10 @@ const GameStatsForm: React.FC = () => {
     setPlayerGame(pg => ({ ...pg, stats: gameStats }));
   }, [gameStats]);
 
-
+/*
 useEffect(() => {
   localStorage.setItem('gameStats', JSON.stringify(gameStats));
-}, [gameStats]);
+}, [gameStats]);*/
 
   // LOCAL STORAGE
 const saveToLocalStorage = () => {
@@ -41,22 +41,24 @@ const saveToLocalStorage = () => {
     const parsed = existing ? JSON.parse(existing) : [];
     const games: PlayerGame[] = Array.isArray(parsed) ? parsed : [];
 
-    const idx = games.findIndex(g => g.gameId === playerGame.gameId);
-    if (idx !== -1) {
-      // Update stats of existing game
-      games[idx] = { ...games[idx], stats: gameStats };
-    } else {
-      // Add new game with current stats
-      games.push({ ...playerGame, stats: gameStats });
-    }
+    const newGame: PlayerGame = {
+      ...playerGame,
+      gameId: Date.now(), // ✅ unique ID per save
+      date: new Date().toISOString(),
+      stats: { ...gameStats },
+    };
 
-    localStorage.setItem('playerGames', JSON.stringify(games));
-    alert(idx !== -1 ? 'Updated game stats.' : 'Saved new game.');
+    games.push(newGame); // ✅ always add, never replace
+
+    localStorage.setItem("playerGames", JSON.stringify(games));
+
+    alert("Saved!");
   } catch (error) {
     console.error('Failed to save player game:', error);
     alert('Save failed.');
   }
 };
+
 
   return (
     <section className="counter">
