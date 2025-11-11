@@ -26,19 +26,32 @@ function PlayerDetails({ player }: PlayerDetailsProps) {
         alt={`${player.firstName} ${player.lastName}`}
         className="w-96 h-64 rounded bg-gray-300"
       />
-      <div>
+      <div className="flex flex-col items-start justify-center">
         <h1 className="text-2xl font-bold mb-2">{player.firstName}</h1>
         <h2 className="text-lg font-bold mb-2">{player.lastName}</h2>
         <div className="flex flex-row gap-4 justify-center">
           <div className="bg-blue-500 h-10 w-10 text-white px-2 rounded-full">
           </div>
-          <h3 className="text-md font-bold mb-2">{player.team}</h3>
-          {player.position}
+          <div className="flex flex-col items-center justify-center">
+            <h3 className="text-md font-bold mb-2">{player.team}</h3>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <h3 className="text-md font-bold mb-2">{player.position}</h3>
+          </div>
         </div>
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
+        <div className="flex flex-row gap-4 justify-center">
+          <div className="flex flex-col items-start">
+            <h4 className="text-md font-bold mb-2">Height</h4>
+            <p className="text-md font-bold mb-2">{player.height} inches</p>
+          </div>
+          <div className="flex flex-col items-start">
+            <h4 className="text-md font-bold mb-2">Weight</h4>
+            <p className="text-md font-bold mb-2">{player.weight} pounds</p>
+          </div>
+          <div className="flex flex-col items-start">
+            <h4 className="text-md font-bold mb-2">Birth Date</h4>
+            <p className="text-md font-bold mb-2">{player.birthDate}</p>
+          </div>
         </div>
       </div>
     </section>
