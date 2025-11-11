@@ -15,9 +15,11 @@ const GameStatsForm: React.FC = () => {
     strikeOuts: 0,
   });
 
+  const newDate = new Date();
+
   const [playerGame, setPlayerGame] = useState<PlayerGame>({
-    gameId: Date.now(),
-    date: new Date().toISOString().split('T')[0],
+    gameId: newDate,
+    date: newDate.getDay(),
     team1: '',
     team2: '',
     stats: { ...gameStats },
@@ -27,11 +29,7 @@ const GameStatsForm: React.FC = () => {
     setPlayerGame(pg => ({ ...pg, stats: gameStats }));
   }, [gameStats]);
 
-// useEffect(() => {
-//  go get GameStats from local storage
-//  will need to add useEffect to Home page component to get GameStats from local storage
 
-// Save GameStats to local storage
 useEffect(() => {
   localStorage.setItem('gameStats', JSON.stringify(gameStats));
 }, [gameStats]);
