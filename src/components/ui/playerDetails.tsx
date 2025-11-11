@@ -28,29 +28,29 @@ function PlayerDetails({ player }: PlayerDetailsProps) {
       />
       <div className="flex flex-col items-start">
         <h1>{player.firstName}</h1>
-        <h2 className="text-lg font-bold mb-2">{player.lastName}</h2>
+        <h2>{player.lastName}</h2>
         <div className="flex flex-row gap-4 justify-center">
           <div className="bg-blue-500 h-10 w-10 text-white px-2 rounded-full">
           </div>
           <div className="flex flex-col items-center justify-center">
-            <h3 className="text-md font-bold mb-2">{player.team}</h3>
+            <p>{player.team}</p>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <h3 className="text-md font-bold mb-2">{player.position}</h3>
+            <h3>{player.position}</h3>
           </div>
         </div>
         <div className="flex flex-row gap-4 justify-center">
           <div className="flex flex-col items-start">
-            <h4 className="text-md font-bold mb-2">Height</h4>
-            <p className="text-md font-bold mb-2">{player.height} inches</p>
+            <h4>Height</h4>
+            <p>{player.height} in</p>
           </div>
           <div className="flex flex-col items-start">
-            <h4 className="text-md font-bold mb-2">Weight</h4>
-            <p className="text-md font-bold mb-2">{player.weight} pounds</p>
+            <h4>Weight</h4>
+            <p>{player.weight} lbs</p>
           </div>
           <div className="flex flex-col items-start">
-            <h4 className="text-md font-bold mb-2">Birth Date</h4>
-            <p className="text-md font-bold mb-2">{player.birthDate}</p>
+            <h4>Birth Date</h4>
+            <p>{player.birthDate}</p>
           </div>
         </div>
       </div>
