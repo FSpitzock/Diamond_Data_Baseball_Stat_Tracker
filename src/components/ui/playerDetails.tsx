@@ -1,5 +1,6 @@
 import React from "react";
 import { Player } from "../../types/player";
+import ConfidentCubbie from "../../assets/Confident_Cubbie.png";
 
 const newPlayer: Player = {
   id: 1,
@@ -7,7 +8,7 @@ const newPlayer: Player = {
   lastName: "Burns",
   height: 72,
   weight: 180,
-  image: "",
+  image: ConfidentCubbie,
   position: "P",
   birthDate: "2000-01-01",
   team: "Marlins",
@@ -22,13 +23,15 @@ function PlayerDetails({ player }: PlayerDetailsProps) {
   return (
     <section className="flex items-center justify-between">
       <img
-        src={player.image || "#"}
+        src={player.image}
         alt={`${player.firstName} ${player.lastName}`}
-        className="w-96 h-64 rounded bg-gray-300"
+        className="w-96 h-64 max-w-full max-h-full rounded-xl bg-gray-300"
       />
-      <div className="flex flex-col items-start">
-        <h1>{player.firstName}</h1>
-        <h2>{player.lastName}</h2>
+      <div className="flex flex-grow flex-col px-16 gap-4 items-start">
+        <div className="flex flex-col items-start">
+          <h1>{player.firstName}</h1>
+          <h2>{player.lastName}</h2>
+        </div>
         <div className="flex flex-row gap-4 justify-center">
           <div className="bg-blue-500 h-10 w-10 text-white px-2 rounded-full">
           </div>
