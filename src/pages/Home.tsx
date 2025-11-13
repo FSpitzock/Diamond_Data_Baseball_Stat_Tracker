@@ -83,7 +83,7 @@ const StatsPage: React.FC = () => {
         <TableCaption>Your saved baseball stats</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Saved At</TableHead>
+            <TableHead>Opponent</TableHead>
             {labels.map((item) => (
               <TableHead key={item.key}>{item.label}</TableHead>
             ))}
