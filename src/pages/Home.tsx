@@ -41,7 +41,7 @@ const StatsPage: React.FC = () => {
 
   // LOAD SAVED STATS FROM LOCAL STORAGE
   useEffect(() => {
-    const saved = localStorage.getItem("gameStats");
+    const saved = localStorage.getItem("playerGames");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -88,7 +88,7 @@ const StatsPage: React.FC = () => {
               </TableCell>
 
               {labels.map((item) => (
-                <TableCell key={item.key}>{stat[item.key]}</TableCell>
+                <TableCell key={item.key}>{stat.stats[item.key]}</TableCell>
               ))}
             </TableRow>
           ))}

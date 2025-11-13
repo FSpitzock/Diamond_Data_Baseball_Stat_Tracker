@@ -15,13 +15,11 @@ const GameStatsForm: React.FC = () => {
     strikeOuts: 0,
   });
 
-  const newDate = new Date();
-
-  const [playerGame, setPlayerGame] = useState<PlayerGame>({
-    gameId: 5,
-    date: '',
-    team1: '',
-    team2: '',
+    const [playerGame, setPlayerGame] = useState<PlayerGame>({
+    gameId: Date.now(), // ✅ unique ID per save
+    date: "",
+    team1: "",
+    team2: "",
     stats: { ...gameStats },
   });
 
@@ -33,26 +31,52 @@ const GameStatsForm: React.FC = () => {
   // LOCAL STORAGE
 const saveToLocalStorage = () => {
   try {
-    const existing = localStorage.getItem('playerGames');
-    const parsed = existing ? JSON.parse(existing) : [];
-    const games: PlayerGame[] = Array.isArray(parsed) ? parsed : [];
+    // Get existing saved games (ensure it's always an array)
+    const existing = localStorage.getItem("playerGames");
+    let games: PlayerGame[] = [];
 
-    const idx = games.findIndex(g => g.gameId === playerGame.gameId);
-    if (idx !== -1) {
-      // Update stats of existing game
-      games[idx] = { ...games[idx], stats: gameStats };
-    } else {
-      // Add new game with current stats
-      games.push({ ...playerGame, stats: gameStats });
+    if (existing) {
+      try {
+        const parsed = JSON.parse(existing);
+        games = Array.isArray(parsed) ? parsed : [];
+      } catch (err) {
+        console.warn("Corrupted localStorage data. Resetting.");
+        games = [];
+      }
     }
 
-    localStorage.setItem('playerGames', JSON.stringify(games));
-    alert(idx !== -1 ? 'Updated game stats.' : 'Saved new game.');
+    // Check if this game already exists (match by ID)
+    const existingIndex = games.findIndex(
+      (g) => g.gameId === playerGame.gameId
+    );
+
+     const newGame: PlayerGame = {
+        ...playerGame,
+        gameId: Date.now(), // ensure unique
+        date: new Date().toISOString(),
+        stats: { ...gameStats },
+      };
+
+    if (existingIndex !== -1) {
+      // Update existing entry
+      games[existingIndex] = newGame;
+    } else {
+      // Add new entry
+      games.push(newGame);
+    }
+
+    // Save updated array back to local storage
+    localStorage.setItem("playerGames", JSON.stringify(games));
+
+    alert(
+      existingIndex !== -1 ? "✅ Updated game stats." : "💾 Saved new game!"
+    );
   } catch (error) {
-    console.error('Failed to save player game:', error);
-    alert('Save failed.');
+    console.error("❌ Failed to save player game:", error);
+    alert("Save failed. Check console for details.");
   }
 };
+
 
   return (
     <section className="counter">
