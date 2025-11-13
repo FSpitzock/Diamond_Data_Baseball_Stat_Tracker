@@ -11,16 +11,16 @@
 
 @layer base {
   h1 {
-    @apply text-xl leading-none;
+    @apply text-lg leading-none;
   }
   h2 {
     @apply text-5xl tracking-tight;
-  }
+  } 
   h3 {
-    @apply text-3xl font-bold;
+    @apply text-xs text-blue-500;
   }
   h4 {
-    @apply text-xs text-neutral-400 tracking-wider uppercase;
+    @apply text-xs text-slate-400 tracking-widest uppercase;
   }
 }
 
@@ -214,7 +214,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(96.715% 0.00011 271.152);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);

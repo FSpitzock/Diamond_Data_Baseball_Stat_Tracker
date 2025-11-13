@@ -1,5 +1,6 @@
 import React from "react";
 import { Player } from "../../types/player";
+import ConfidentCubbie from "../../assets/Confident_Cubbie.png";
 
 const newPlayer: Player = {
   id: 1,
@@ -7,10 +8,10 @@ const newPlayer: Player = {
   lastName: "Burns",
   height: 72,
   weight: 180,
-  image: "",
+  image: ConfidentCubbie,
   position: "P",
   birthDate: "2000-01-01",
-  team: "Marlins",
+  team: "Orlando Cubs",
   totalStats: null,
 };
 
@@ -20,26 +21,28 @@ type PlayerDetailsProps = {
 
 function PlayerDetails({ player }: PlayerDetailsProps) {
   return (
-    <section className="flex items-center justify-between">
+    <section className="flex w-[100%] py-8 items-center justify-between mx-auto">
       <img
-        src={player.image || "#"}
+        src={player.image}
         alt={`${player.firstName} ${player.lastName}`}
-        className="w-96 h-64 rounded bg-gray-300"
+        className="w-96 h-64 rounded-xl bg-gray-300"
       />
-      <div className="flex flex-col items-start">
-        <h1>{player.firstName}</h1>
-        <h2>{player.lastName}</h2>
-        <div className="flex flex-row gap-4 justify-center">
+      <div className="flex flex-grow flex-col px-16 gap-4 items-start">
+        <div className="flex flex-col items-start">
+          <h1>{player.firstName}</h1>
+          <h2>{player.lastName}</h2>
+        </div>
+        <div className="flex flex-row gap-4 justify-center items-center">
           <div className="bg-blue-500 h-10 w-10 text-white px-2 rounded-full">
           </div>
           <div className="flex flex-col items-center justify-center">
             <p>{player.team}</p>
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex w-8 h-6 flex-col border border-blue-500 rounded items-center justify-center">
             <h3>{player.position}</h3>
           </div>
         </div>
-        <div className="flex flex-row gap-4 justify-center">
+        <div className="flex w-[80%] lg:max-w-[50%] flex-row gap-4 justify-between">
           <div className="flex flex-col items-start">
             <h4>Height</h4>
             <p>{player.height} in</p>
