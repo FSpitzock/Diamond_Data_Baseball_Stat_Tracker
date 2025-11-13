@@ -60,7 +60,7 @@ const StatsPage: React.FC = () => {
 
   // CALCULATE TOTALS
   const totals = labels.reduce((acc, item) => {
-    acc[item.key] = statsArray.reduce((sum, stat) => sum + (stat[item.key] || 0), 0);
+    acc[item.key] = statsArray.reduce((sum, stat) => sum + (stat.stats[item.key] || 0), 0);
     return acc;
   }, {} as Record<Exclude<keyof GameStats, "savedAt">, number>);
 
