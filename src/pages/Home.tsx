@@ -40,6 +40,12 @@ const StatsPage: React.FC = () => {
     { key: "strikeOuts", label: "Strike Outs" },
   ];
 
+  // batting avg = hits/at bats
+  const battingAvg = (hits: number, atBats: number) => {
+    if (atBats === 0) return 0;
+    return (hits / atBats).toFixed(3);
+  };
+
   // LOAD SAVED STATS FROM LOCAL STORAGE
   useEffect(() => {
     const saved = localStorage.getItem("playerGames");
@@ -65,12 +71,12 @@ const StatsPage: React.FC = () => {
   }, {} as Record<Exclude<keyof GameStats, "savedAt">, number>);
 
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col gap-8">
       <DemoPlayerDetails />
-      <div className="flex flex-row mx-auto w-[80%] gap-4 justify-between">
+      <div className="flex flex-row mx-auto w-full gap-4 justify-between">
         <StatsCard label={labels[0].label} value={totals[labels[0].key]} />
         <StatsCard label={labels[1].label} value={totals[labels[1].key]} />
-        <StatsCard label={labels[2].label} value={totals[labels[2].key]} />
+        <StatsCard label="Batting Avg" value={battingAvg(totals.hits, totals.atBats)} />
       </div>
 
       <Table>
