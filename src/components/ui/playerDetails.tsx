@@ -21,7 +21,7 @@ type PlayerDetailsProps = {
 
 function PlayerDetails({ player }: PlayerDetailsProps) {
   return (
-    <section className="flex w-[80%] items-center justify-between mx-auto">
+    <section className="flex w-[100%] py-8 items-center justify-between mx-auto">
       <img
         src={player.image}
         alt={`${player.firstName} ${player.lastName}`}
@@ -42,7 +42,7 @@ function PlayerDetails({ player }: PlayerDetailsProps) {
             <h3>{player.position}</h3>
           </div>
         </div>
-        <div className="flex w-full flex-row gap-4 justify-between">
+        <div className="flex w-[80%] lg:max-w-[50%] flex-row gap-4 justify-between">
           <div className="flex flex-col items-start">
             <h4>Height</h4>
             <p>{player.height} in</p>

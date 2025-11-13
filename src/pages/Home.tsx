@@ -10,6 +10,7 @@ import {
 } from "../components/ui/table";
 import { Player } from "../types/player";
 import PlayerDetails, { DemoPlayerDetails } from "@/components/ui/playerDetails";
+import StatsCard from "@/components/ui/statsCard";
 
 type GameStats = {
   atBats: number;
@@ -64,9 +65,14 @@ const StatsPage: React.FC = () => {
   }, {} as Record<Exclude<keyof GameStats, "savedAt">, number>);
 
   return (
-    <section className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Saved Stats</h1>
+    <section className="flex flex-col gap-4">
       <DemoPlayerDetails />
+      <div className="flex flex-row mx-auto w-[100%] gap-4 justify-between">
+        <StatsCard label={labels[0].label} value={totals[labels[0].key]} />
+        <StatsCard label={labels[1].label} value={totals[labels[1].key]} />
+        <StatsCard label={labels[2].label} value={totals[labels[2].key]} />
+      </div>
+
       <Table>
         <TableCaption>Your saved baseball stats</TableCaption>
         <TableHeader>
