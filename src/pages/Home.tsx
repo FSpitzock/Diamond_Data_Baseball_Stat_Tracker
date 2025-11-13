@@ -60,14 +60,14 @@ const StatsPage: React.FC = () => {
 
   // CALCULATE TOTALS
   const totals = labels.reduce((acc, item) => {
-    acc[item.key] = statsArray.reduce((sum, stat) => sum + Number(stat.stats?.[item.key] || 0), 0);
+    acc[item.key] = statsArray.reduce((sum, stat) => sum + (stat[item.key] || 0), 0);
     return acc;
   }, {} as Record<Exclude<keyof GameStats, "savedAt">, number>);
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col">
       <DemoPlayerDetails />
-      <div className="flex flex-row mx-auto w-[100%] gap-4 justify-between">
+      <div className="flex flex-row mx-auto w-[80%] gap-4 justify-between">
         <StatsCard label={labels[0].label} value={totals[labels[0].key]} />
         <StatsCard label={labels[1].label} value={totals[labels[1].key]} />
         <StatsCard label={labels[2].label} value={totals[labels[2].key]} />
@@ -109,13 +109,7 @@ const StatsPage: React.FC = () => {
         </TableBody>
       </Table>
     </section>
- 
   );
-  
 };
 
-
-
 export default StatsPage;
-
-
