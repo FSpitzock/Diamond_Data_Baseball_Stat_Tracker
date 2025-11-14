@@ -99,8 +99,13 @@
 }
 
 .logo-img {
-  width: 48px;
-  height: 48px;
+  width: 200px;
+  height: 200px;
+}
+
+.logo-img-footer {
+  width: 150px;
+  height: 150px;
 }
 
 .logo-text {
