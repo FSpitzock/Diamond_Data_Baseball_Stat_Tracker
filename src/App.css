@@ -71,11 +71,23 @@
     transition-colors;
   }
   .counter { @apply
+    bg-white
     flex
     flex-col
     gap-8
     mx-auto
-    w-lg
+    w-3xl
+    px-16
+    py-16
+    m-16
+  }
+  .buttonPrimary { @apply
+    p-3
+    rounded-md
+    bg-blue-500
+    text-white
+    hover:bg-blue-600
+    transition-colors;
   }
 }
 

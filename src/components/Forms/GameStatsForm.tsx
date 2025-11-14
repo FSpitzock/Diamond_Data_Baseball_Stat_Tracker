@@ -81,6 +81,9 @@ const saveToLocalStorage = () => {
 
   return (
     <section className="counter">
+      <heading>
+        <h1>Enter In Game Stats Here:</h1>
+      </heading>
       <div>
         <input className="items-stretch w-full" type="text" placeholder='Opponent' value={playerGame.team2} onChange={(e) => setPlayerGame(pg => ({ ...pg, team2: e.target.value }))} />
       </div>
@@ -192,7 +195,7 @@ const saveToLocalStorage = () => {
         </div>
       </div>
     
-    <button onClick={saveToLocalStorage}>Save Stats</button>
+    <button className="buttonPrimary" onClick={saveToLocalStorage}>Save Stats</button>
     </section>
 
     
