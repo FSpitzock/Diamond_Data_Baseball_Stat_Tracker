@@ -86,11 +86,11 @@ const saveToLocalStorage = () => {
       </div>
       <div className="row-container flex row items-center gap-8">
         <div>
-          <h2>At Bats:</h2>
+          <h2 className="label">At Bats:</h2>
         </div>
-        <div className="flex row items-center gap-2">
-          <div className="text-2xl font-bold text-center w-12">{gameStats.atBats}</div>
+        <div className="flex items-center gap-2">
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, atBats: gameStats.atBats - 1 })}><MinusIcon size={24} /></button>
+          <span className="statInput">{gameStats.atBats}</span>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, atBats: gameStats.atBats + 1 })}><PlusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, atBats: 0 })}><ArrowCounterClockwiseIcon size={24} /></button>
         </div>
@@ -98,10 +98,10 @@ const saveToLocalStorage = () => {
 
       <div className="row-container flex row items-center gap-8">
         <div>
-          <h2>Hits:</h2>
+          <h2 className="label">Hits:</h2>
         </div>
         <div className="flex row items-center gap-2">
-          <div className="text-2xl font-bold text-center w-12">{gameStats.hits}</div>
+          <div className="statInput">{gameStats.hits}</div>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, hits: gameStats.hits - 1 })}><MinusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, hits: gameStats.hits + 1 })}><PlusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, hits: 0 })}><ArrowCounterClockwiseIcon size={24} /></button>
@@ -110,10 +110,10 @@ const saveToLocalStorage = () => {
 
       <div className="row-container flex row items-center gap-8">
         <div>
-          <h2>Singles:</h2>
+          <h2 className="label">Singles:</h2>
         </div>
         <div className="flex row items-center gap-2">
-          <div className="text-2xl font-bold text-center w-12">{gameStats.singles}</div>
+          <div className="statInput">{gameStats.singles}</div>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, singles: gameStats.singles - 1 })}><MinusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, singles: gameStats.singles + 1 })}><PlusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, singles: 0 })}><ArrowCounterClockwiseIcon size={24} /></button>
@@ -122,10 +122,10 @@ const saveToLocalStorage = () => {
 
       <div className="row-container flex row items-center gap-8">
         <div>
-          <h2>Doubles:</h2>
+          <h2 className="label">Doubles:</h2>
         </div>
         <div className="flex row items-center gap-2">
-          <div className="text-2xl font-bold text-center w-12">{gameStats.doubles}</div>
+          <div className="statInput">{gameStats.doubles}</div>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, doubles: gameStats.doubles - 1 })}><MinusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, doubles: gameStats.doubles + 1 })}><PlusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, doubles: 0 })}><ArrowCounterClockwiseIcon size={24} /></button>
@@ -134,10 +134,10 @@ const saveToLocalStorage = () => {
 
       <div className="row-container flex row items-center gap-8">
         <div>
-          <h2>Triples:</h2>
+          <h2 className="label">Triples:</h2>
         </div>
         <div className="flex row items-center gap-2">
-          <div className="text-2xl font-bold text-center w-12">{gameStats.triples}</div>
+          <div className="statInput">{gameStats.triples}</div>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, triples: gameStats.triples - 1 })}><MinusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, triples: gameStats.triples + 1 })}><PlusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, triples: 0 })}><ArrowCounterClockwiseIcon size={24} /></button>
@@ -146,10 +146,10 @@ const saveToLocalStorage = () => {
 
       <div className="row-container flex row items-center gap-8">
         <div>
-          <h2>Home Runs:</h2>
+          <h2 className="label">Home Runs:</h2>
         </div>
         <div className="flex row items-center gap-2">
-          <div className="text-2xl font-bold text-center w-12">{gameStats.homeRuns}</div>
+          <div className="statInput">{gameStats.homeRuns}</div>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, homeRuns: gameStats.homeRuns - 1 })}><MinusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, homeRuns: gameStats.homeRuns + 1 })}><PlusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, homeRuns: 0 })}><ArrowCounterClockwiseIcon size={24} /></button>
@@ -158,10 +158,10 @@ const saveToLocalStorage = () => {
 
       <div className="row-container flex row items-center gap-8">
         <div>
-          <h2>RBI:</h2>
+          <h2 className="label">RBI:</h2>
         </div>
         <div className="flex row items-center gap-2">
-          <div className="text-2xl font-bold text-center w-12">{gameStats.rbi}</div>
+          <div className="statInput">{gameStats.rbi}</div>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, rbi: gameStats.rbi - 1 })}><MinusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, rbi: gameStats.rbi + 1 })}><PlusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, rbi: 0 })}><ArrowCounterClockwiseIcon size={24} /></button>
@@ -170,10 +170,10 @@ const saveToLocalStorage = () => {
 
       <div className="row-container flex row items-center gap-8">
         <div>
-          <h2>Walks:</h2>
+          <h2 className="label">Walks:</h2>
         </div>
         <div className="flex row items-center gap-2">
-          <div className="text-2xl font-bold text-center w-12">{gameStats.walks}</div>
+          <div className="statInput">{gameStats.walks}</div>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, walks: gameStats.walks - 1 })}><MinusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, walks: gameStats.walks + 1 })}><PlusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, walks: 0 })}><ArrowCounterClockwiseIcon size={24} /></button>
@@ -182,10 +182,10 @@ const saveToLocalStorage = () => {
 
       <div className="row-container flex row items-center gap-8">
         <div>
-          <h2>Strike Outs:</h2>
+          <h2 className="label">Strike Outs:</h2>
         </div>
         <div className="flex row items-center gap-2">
-          <div className="text-2xl font-bold text-center w-12">{gameStats.strikeOuts}</div>
+          <div className="statInput">{gameStats.strikeOuts}</div>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, strikeOuts: gameStats.strikeOuts - 1 })}><MinusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, strikeOuts: gameStats.strikeOuts + 1 })}><PlusIcon size={24} /></button>
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, strikeOuts: 0 })}><ArrowCounterClockwiseIcon size={24} /></button>
