@@ -10,12 +10,20 @@
 }
 
 @layer base {
+    * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-slate-500;
+  }
   h1 { @apply
     text-lg
-    leading-none;
+    leading-none
+    text-slate-900
   }
   h2 { @apply
     text-5xl
+    text-slate-900
     tracking-tight;
   } 
   h3 { @apply
@@ -24,9 +32,13 @@
   }
   h4 { @apply
     text-xs
-    text-slate-400
+    text-slate-500
     tracking-widest
     uppercase;
+  }
+  p { @apply
+    text-sm
+    text-slate-900;
   }
   input {@apply
     p-3
@@ -43,17 +55,27 @@
   }
   .iconButton { @apply
     bg-white
+    text-neutral-500
     rounded-md
     p-2
-    hover:bg-slate-200
+    hover:bg-neutral-200
+    transition-colors;
+  }
+  .iconButton-destructive { @apply
+    bg-none
+    text-neutral-500
+    rounded-md
+    p-2
+    hover:bg-red-100
+    hover:text-red-500
     transition-colors;
   }
   .counter { @apply
     flex
     flex-col
     gap-8
-    w-full
-    items-center
+    mx-auto
+    w-lg
   }
 }
 
@@ -62,10 +84,17 @@
   text-slate-900
 }
 
+.labelContainer { @apply
+  w-32
+  flex-1
+  justify-items-start
+}
+
 .statInput { @apply
   text-2xl
   font-medium
   text-center
+  text-slate-900
   w-24
   p-1
   rounded-md
@@ -169,7 +198,7 @@
 }
 
 .nav-link { @apply
-  hover:text-blue-100;
+  hover:text-blue-500/80;
 }
 
 .nav-link.active { @apply
@@ -329,13 +358,3 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
