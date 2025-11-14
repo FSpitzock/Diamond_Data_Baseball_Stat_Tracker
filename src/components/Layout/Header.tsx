@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { NavLink, Link } from "react-router-dom";
-import Logo from "../../assets/DiamondDataLogo.png";
+import Logo from "../../assets/diamond-data-logo.svg";
+
 
 const Header: FC = () => {
   return (
@@ -10,7 +11,7 @@ const Header: FC = () => {
         {/* Logo */}
         <Link to="/" className="logo">
           <img src={Logo} alt="App Logo" className="logo-img" />
-          <h1 className="logo-text">Diamond Data</h1>
+          
         </Link>
 
         {/* Navigation */}
