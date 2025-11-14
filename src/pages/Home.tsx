@@ -94,9 +94,7 @@ const StatsPage: React.FC = () => {
           {statsArray.map((stat, index) => (
             <TableRow key={index}>
               <TableCell>
-                {stat.savedAt
-                  ? new Date(stat.savedAt).toLocaleString()
-                  : `Entry #${index + 1}`}
+                {stat.team2 || "-"}
               </TableCell>
 
               {labels.map((item) => (
