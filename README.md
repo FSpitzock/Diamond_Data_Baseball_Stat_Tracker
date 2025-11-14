@@ -16,7 +16,7 @@ It allows you to enter game stats, store them locally, view summaries, and calcu
 - 🧮 **Track Player Stats** — record at-bats, hits, RBIs, walks, strikeouts, and more  
 - 💾 **Local Storage Persistence** — data remains even after closing the browser  
 - 📊 **Dynamic Totals Row** — automatic calculation of cumulative stats  
-- 🧠 **AI Integration (OpenAI)** — generate insights, summaries, or performance analysis  
+- 🧠 **AI Integration (OpenAI)** — generate insights, summaries, or performance analysis (npm install @langchain/core @langchain/openai) 
 - 🎨 **Modern UI** — styled with shadcn/ui and TailwindCSS for a clean, responsive design  
 - ⚙️ **Fast Dev Environment** — powered by Vite for instant updates
 
