@@ -3,32 +3,124 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Brand uses tailwind Blue and Neutral Colors */
+/* Brand uses tailwind Blue and neutral Colors */
 
 @theme {
   --font-sans: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 @layer base {
-  h1 {
-    @apply text-lg leading-none;
+    * {
+    @apply border-border outline-ring/50;
   }
-  h2 {
-    @apply text-5xl tracking-tight;
+  body {
+    @apply bg-background text-neutral-500;
+  }
+  h1 { @apply
+    text-lg
+    leading-none
+    text-neutral-900
+  }
+  h2 { @apply
+    text-5xl
+    text-neutral-900
+    tracking-tight;
   } 
-  h3 {
-    @apply text-xs text-blue-500;
+  h3 { @apply
+    text-xs
+    text-blue-500;
   }
-  h4 {
-    @apply text-xs text-slate-400 tracking-widest uppercase;
+  h4 { @apply
+    text-xs
+    text-neutral-500
+    tracking-widest
+    uppercase;
+  }
+  p { @apply
+    text-sm
+    text-neutral-900;
+  }
+  input {@apply
+    py-3
+    px-4
+    rounded-md
+    bg-white
+    border-2
+    border-neutral-100
+    text-neutral-900
   }
 }
 
 @layer components {
-  .card {
-    @apply bg-white p-4 rounded-lg;
+  .card { @apply
+    bg-white
+    p-4 
+    rounded-lg;
+  }
+  .iconButton { @apply
+    bg-white
+    text-neutral-500
+    border-2
+    border-neutral-100
+    rounded-md
+    p-2
+    hover:bg-neutral-50
+    transition-colors;
+  }
+  .iconButton-destructive { @apply
+    bg-none
+    text-neutral-500
+    rounded-md
+    p-2
+    hover:bg-red-100
+    hover:text-red-500
+    transition-colors;
+  }
+  .counter { @apply
+    bg-white
+    flex
+    flex-col
+    gap-8
+    mx-auto
+    w-3xl
+    px-16
+    py-8
+    m-16
+    rounded-2xl
+  }
+  .buttonPrimary { @apply
+    p-3
+    rounded-md
+    bg-blue-500
+    text-white
+    hover:bg-blue-600
+    transition-colors;
   }
 }
+
+.label { @apply
+  text-xl
+  text-neutral-900
+}
+
+.labelContainer { @apply
+  w-32
+  flex-1
+  justify-items-start
+}
+
+.statInput { @apply
+  text-2xl
+  font-medium
+  text-center
+  text-neutral-900
+  w-24
+  p-1
+  rounded-md
+  bg-neutral-100
+}
+
+
 
 #root {
   max-width: 1280px;
@@ -119,20 +211,20 @@
   gap: 1.5rem;
 }
 
-.nav-link {
-  text-decoration: none;
-  font-size: 1rem;
-  color: #444;
-  transition: color 0.2s ease;
+.nav-link { @apply
+  text-neutral-900
+  transition-colors;
 }
 
-.nav-link:hover {
-  color: #0077ff;
+.nav-link { @apply
+  hover:text-blue-500/80;
 }
 
-.nav-link.active {
-  color: #0077ff;
-  font-weight: bold;
+.nav-link.active { @apply
+  text-blue-500
+  font-medium
+  border-b-2
+  border-blue-500
 }
 
 /* --- FOOTER (Centered) --- */
@@ -152,8 +244,8 @@
 
   display: flex;
   flex-direction: column;
-  align-items: center;   /* ✅ center items horizontally */
-  text-align: center;    /* ✅ center the text */
+  align-items: center;
+  text-align: center;
   gap: 1rem;
 }
 
@@ -285,13 +377,3 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
