@@ -6,7 +6,8 @@ const Navigation: React.FC = () => {
     <nav>
       <div className="nav-links">
         <Link to="/" className="nav-link">Home</Link><br></br>
-        <Link to="/Stats" className="nav-link">Stats</Link>
+        <Link to="/Stats" className="nav-link">Stats</Link><br></br>
+        <Link to="/BaseballAI" className="nav-link">BaseballAI</Link>
       </div>
     </nav>
   );
