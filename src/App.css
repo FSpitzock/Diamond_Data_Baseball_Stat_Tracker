@@ -28,6 +28,9 @@
   .card {
     @apply bg-white p-4 rounded-lg;
   }
+  .iconButton {
+    @apply bg-white p-2 rounded-md hover:bg-slate-200 transition-colors;
+  }
 }
 
 #root {
