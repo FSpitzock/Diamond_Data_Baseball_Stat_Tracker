@@ -3,25 +3,27 @@ import { GameStats } from '../../types/game';
 import { PlayerGame } from '../../types/player';
 import { PlusIcon, MinusIcon, ArrowCounterClockwiseIcon  } from '@phosphor-icons/react';
 
+const initialGameStats: GameStats = {
+  atBats: 0,
+  hits: 0,
+  singles: 0,
+  doubles: 0,
+  triples: 0,
+  homeRuns: 0,
+  rbi: 0,
+  walks: 0,
+  strikeOuts: 0,
+};
+
 const GameStatsForm: React.FC = () => {
-  const [gameStats, setGameStats] = useState<GameStats>({
-    atBats: 0,
-    hits: 0,
-    singles: 0,
-    doubles: 0,
-    triples: 0,
-    homeRuns: 0,
-    rbi: 0,
-    walks: 0,
-    strikeOuts: 0,
-  });
+  const [gameStats, setGameStats] = useState<GameStats>({ ...initialGameStats });
 
     const [playerGame, setPlayerGame] = useState<PlayerGame>({
     gameId: Date.now(), // ✅ unique ID per save
     date: "",
     team1: "",
     team2: "",
-    stats: { ...gameStats },
+    stats: { ...initialGameStats },
   });
 
   const [notification, setNotification] = useState<null | { message: string; type: "success" | "error" }>(null);
@@ -78,6 +80,16 @@ const saveToLocalStorage = () => {
     message: existingIndex !== -1 ? "✅ Updated game stats." : "💾 Saved new game!",
     type: "success",
   });
+
+   // --- RESET FORM USING initialGameStats ---
+      setGameStats({ ...initialGameStats });
+      setPlayerGame({
+        gameId: Date.now(),
+        date: "",
+        team1: "",
+        team2: "",
+        stats: { ...initialGameStats },
+      });
 
   // Hide notification after 3 seconds
   setTimeout(() => setNotification(null), 3000);
