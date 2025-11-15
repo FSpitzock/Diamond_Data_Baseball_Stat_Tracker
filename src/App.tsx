@@ -12,7 +12,7 @@ import '../src/App.css';
 const App: React.FC = () => {
   return (
     <>
-    <BrowserRouter>
+    <BrowserRouter basename="/Diamond_Data_Baseball_Stat_Tracker/">
     <Header />
       <Routes>
         <Route path="/" element={<Home />} />
