@@ -2,7 +2,7 @@
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.VITE_OPENAI_API_KEY,
 });
 
 export default async function handler(req: any, res: any) {
@@ -26,3 +26,4 @@ export default async function handler(req: any, res: any) {
     return res.status(500).json({ error: error?.message });
   }
 }
+
