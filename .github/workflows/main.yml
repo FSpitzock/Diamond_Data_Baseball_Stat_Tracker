@@ -12,10 +12,7 @@ permissions:
 
 jobs:
   build:
-    name: Build project
     runs-on: ubuntu-latest
-    outputs:
-      pages_artifact: ${{ steps.upload-artifact.outputs.artifact-path }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -32,18 +29,15 @@ jobs:
         run: npm run build
 
       - name: Upload Pages Artifact
-        id: upload-artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
   deploy:
-    name: Deploy to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
     steps:
       - name: Deploy
-        id: deploy
         uses: actions/deploy-pages@v4
