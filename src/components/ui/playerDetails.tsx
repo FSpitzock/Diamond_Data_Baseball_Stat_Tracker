@@ -4,8 +4,8 @@ import ConfidentCubbie from "../../assets/Confident_Cubbie.png";
 
 const newPlayer: Player = {
   id: 1,
-  firstName: "Dwayne",
-  lastName: "Burns",
+  firstName: "Paul",
+  lastName: "George",
   height: 72,
   weight: 180,
   image: ConfidentCubbie,
@@ -25,7 +25,7 @@ function PlayerDetails({ player }: PlayerDetailsProps) {
       <img
         src={player.image}
         alt={`${player.firstName} ${player.lastName}`}
-        className="w-96 h-64 rounded-xl bg-gray-300"
+        className="w-[50%] rounded-xl bg-gray-300"
       />
       <div className="flex flex-grow flex-col px-16 gap-4 items-start">
         <div className="flex flex-col items-start">
