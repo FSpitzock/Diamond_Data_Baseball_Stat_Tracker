@@ -5,23 +5,21 @@ import Logo from "../../assets/diamond-data-logo.svg";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-white border-t shadow-sm">
-      <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="mt-48 py-6 w-full bg-[var(--background)] border-t">
+      <div className="">
 
         {/* Branding + Navigation */}
-        <div className="flex flex-col md:flex-row items-center gap-100">
-          <Link to="/" className="flex items-center gap-2">
+        <div className="flex flex-col md:flex-row items-start">
+          <Link to="/" className="w-full">
             <img 
               src={Logo} 
               alt="App Logo" 
-              className="h-8 w-auto opacity-90 hover:opacity-100 transition"
+              className="h-8 opacity-90 hover:opacity-100 transition"
             />
           </Link>
 
           {/* Nav */}
-          <div className="text-sm">
             <Navigation />
-          </div>
         </div>
 
         {/* Copy / Legal */}

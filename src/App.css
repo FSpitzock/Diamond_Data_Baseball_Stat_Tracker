@@ -167,7 +167,7 @@
 
 .header {
   width: 100%;
-  background: #ffffff;
+  background: var(--background);
   border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
@@ -175,9 +175,8 @@
 }
 
 .header-container {
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 0.75rem 1.5rem;
+  padding: 0rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -212,7 +211,7 @@
 }
 
 .nav-link { @apply
-  text-neutral-900
+  text-neutral-500
   transition-colors;
 }
 
@@ -225,6 +224,23 @@
   font-medium
   border-b-2
   border-blue-500
+}
+
+.nav-links { @apply
+  flex
+  flex-col
+  gap-4
+  py-2
+  text-left
+  text-sm
+}
+
+.nav-container { @apply
+  flex
+  flex-row
+  items-center
+  justify-center
+  gap-24
 }
 
 /* --- FOOTER (Centered) --- */
@@ -241,7 +257,6 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 0 1.5rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
