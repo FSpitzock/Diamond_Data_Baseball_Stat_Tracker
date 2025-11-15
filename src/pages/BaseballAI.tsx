@@ -2,10 +2,20 @@ import { useState } from "react";
 import { ChatOpenAI } from "@langchain/openai";
 
 const llm = new ChatOpenAI({
-  apiKey: import.meta.env.OPENAI_API_KEY,
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
   model: "gpt-4o-mini",
   temperature: 0.7,
 });
+
+const submit = async () => {
+  const res = await fetch("/api/openai", {
+    method: "POST",
+    body: JSON.stringify({ prompt: text }),
+  });
+
+  const data = await res.json();
+  setOutput(data.result);
+};
 
 export default function BaseballAI() {
   const [response, setResponse] = useState("");
