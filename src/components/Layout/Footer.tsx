@@ -23,10 +23,10 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Copy / Legal */}
-        <div className="text-center md:text-right text-sm text-gray-600">
-          <p>&copy; {new Date().getFullYear()} Diamond Data LLC.</p>
-          <p>Created by Dwayne Burns and Frank Spitzock</p>
-          <p>All rights reserved.</p>
+        <div className="flex flex-row justify-between items-center pt-4">
+          <p className="text-neutral-500 text-xs">&copy; {new Date().getFullYear()} Diamond Data LLC.</p>
+          <p className="text-neutral-500 text-xs">Created by Dwayne Burns and Frank Spitzock</p>
+          <p className="text-neutral-500 text-xs">All rights reserved.</p>
         </div>
       </div>
     </footer>
