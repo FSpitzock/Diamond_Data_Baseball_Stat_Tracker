@@ -1,0 +1,50 @@
+/* Minimal modern CSS reset */
+
+/* Box sizing and border defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+
+/* Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role */
+ul[role='list'], ol[role='list'] {
+  list-style: none;
+}
+
+/* Anchor defaults */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Prefers-reduced-motion adjustments */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
