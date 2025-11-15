@@ -1,28 +1,28 @@
 // api/openai.ts
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import OpenAI from 'openai';
+import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // secure environment variable
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+export default async function handler(req: any, res: any) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
     const { prompt } = req.body;
 
     const response = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt }],
+      model: "gpt-4o-mini",
+      messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
     });
 
-    res.status(200).json({ result: response.choices[0].message.content });
+    return res.status(200).json({
+      result: response.choices[0].message.content,
+    });
   } catch (error: any) {
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error?.message });
   }
 }
-console.log("API KEY FOUND?", !!process.env.OPENAI_API_KEY);
