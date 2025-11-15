@@ -24,6 +24,9 @@ const GameStatsForm: React.FC = () => {
     stats: { ...gameStats },
   });
 
+  const [notification, setNotification] = useState<null | { message: string; type: "success" | "error" }>(null);
+
+
   useEffect(() => {
     setPlayerGame(pg => ({ ...pg, stats: gameStats }));
   }, [gameStats]);
@@ -40,7 +43,7 @@ const saveToLocalStorage = () => {
       try {
         const parsed = JSON.parse(existing);
         games = Array.isArray(parsed) ? parsed : [];
-      } catch (err) {
+      } catch (error) {
         console.warn("Corrupted localStorage data. Resetting.");
         games = [];
       }
@@ -67,16 +70,30 @@ const saveToLocalStorage = () => {
     }
 
     // Save updated array back to local storage
-    localStorage.setItem("playerGames", JSON.stringify(games));
+  
+  localStorage.setItem("playerGames", JSON.stringify(games));
 
-    alert(
-      existingIndex !== -1 ? "✅ Updated game stats." : "💾 Saved new game!"
-    );
-  } catch (error) {
-    console.error("❌ Failed to save player game:", error);
-    alert("Save failed. Check console for details.");
-  }
-};
+  // ✅ Show success notification
+  setNotification({
+    message: existingIndex !== -1 ? "✅ Updated game stats." : "💾 Saved new game!",
+    type: "success",
+  });
+
+  // Hide notification after 3 seconds
+  setTimeout(() => setNotification(null), 3000);
+
+} catch (error) {
+  console.error("❌ Failed to save player game:", error);
+
+  // ❌ Show error notification
+  setNotification({
+    message: "Save failed. Check console for details.",
+    type: "error",
+  });
+
+  setTimeout(() => setNotification(null), 5000);
+}
+  };
 
 
   return (
@@ -162,7 +179,7 @@ const saveToLocalStorage = () => {
 
       <div className="row-container flex row items-center gap-8">
         <div className="labelContainer">
-          <h2 className="label">RBI:</h2>
+          <h2 className="label">RBI</h2>
         </div>
         <div className="flex row items-center gap-2">
           <button className="iconButton" onClick={() => setGameStats({ ...gameStats, rbi: gameStats.rbi - 1 })}><MinusIcon size={24} /></button>
@@ -195,10 +212,27 @@ const saveToLocalStorage = () => {
           <button className="iconButton-destructive" onClick={() => setGameStats({ ...gameStats, strikeOuts: 0 })}><ArrowCounterClockwiseIcon size={24} /></button>
         </div>
       </div>
-    
-    <button className="buttonPrimary" onClick={saveToLocalStorage}>Save Stats</button>
-    </section>
 
+    
+   <div className="relative mt-4">
+  <button className="buttonPrimary" onClick={saveToLocalStorage}>
+    Save Stats
+  </button>
+
+  {notification && (
+  <div
+    className={`absolute top-[-3rem] left-1/2 transform -translate-x-1/2
+                px-4 py-2 rounded shadow-lg text-white font-semibold
+                transition-all duration-300 ${
+                  notification.type === "success" ? "bg-green-500" : "bg-red-500"
+                }`}
+  >
+    {notification.message}
+  </div>
+)}
+</div>
+
+    </section>
     
   )};
 
