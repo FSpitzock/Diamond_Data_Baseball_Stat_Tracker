@@ -5,7 +5,7 @@ import path from "path"
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/',
+  base: '/Diamond_Data_Baseball_Stat_Tracker/',
   plugins: [
     react(),
     tailwindcss(),
