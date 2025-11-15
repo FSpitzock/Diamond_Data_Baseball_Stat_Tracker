@@ -25,3 +25,4 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.status(500).json({ error: error.message });
   }
 }
+console.log("API KEY FOUND?", !!process.env.OPENAI_API_KEY);
