@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ChatOpenAI } from "@langchain/openai";
 
 const llm = new ChatOpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: import.meta.env.OPENAI_API_KEY,
   model: "gpt-4o-mini",
   temperature: 0.7,
 });
