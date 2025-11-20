@@ -5,7 +5,7 @@ export interface Player {
   id: number;
   firstName: string;
   lastName: string;
-  height: number;
+  height: string;
   weight: number;
   image: string;
   position: PlayerPosition;

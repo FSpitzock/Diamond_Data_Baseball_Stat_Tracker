@@ -1,17 +1,17 @@
 import React from "react";
 import { Player } from "../../types/player";
-import ConfidentCubbie from "../../assets/Confident_Cubbie.png";
+import ethan_outlaw from "../../assets/ethan_outlaw.jpg"
 
 const newPlayer: Player = {
   id: 1,
-  firstName: "Paul",
-  lastName: "George",
-  height: 72,
-  weight: 180,
-  image: ConfidentCubbie,
-  position: "P",
-  birthDate: "2000-01-01",
-  team: "Orlando Cubs",
+  firstName: "Ethan",
+  lastName: "Spitzock",
+  height: "4 ft 7",
+  weight: 90,
+  image: ethan_outlaw,
+  position: "1B",
+  birthDate: "08-18-2016",
+  team: "Oviedo Outlaws",
   totalStats: null,
 };
 
