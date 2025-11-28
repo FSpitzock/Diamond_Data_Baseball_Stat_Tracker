@@ -1,5 +1,3 @@
-import React from "react";
-
 
 function StatsCard({ label, value }: { label: string; value: number }) {
   return (
