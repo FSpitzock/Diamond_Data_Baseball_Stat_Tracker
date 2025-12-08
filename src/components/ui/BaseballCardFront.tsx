@@ -1,4 +1,3 @@
-import React from "react";
 
 export type Stats = {
   atBats?: number;
