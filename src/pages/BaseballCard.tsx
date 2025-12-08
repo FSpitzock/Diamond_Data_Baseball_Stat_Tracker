@@ -7,10 +7,10 @@ export default function BaseballCard() {
   return (
     <div className="p-6 max-w-3xl mx-auto">
       <BaseballCardFront
-        imageSrc="/images/player1.jpg"
+        imageSrc="../src/assets/ethan_pitcher.jpg"
         alt="Player in action"
-        name="Frank Spitzock"
-        team="Diamond Data"
+        name="Ethan Spitzock"
+        team="Oviedo Outlaws"
         position="1B"
         stats={stats}
         onClick={() => console.log("card clicked")}
